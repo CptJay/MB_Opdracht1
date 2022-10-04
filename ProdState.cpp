@@ -6,5 +6,5 @@ ProdState::ProdState(const string &voor, const string &na) : voor(voor), na(na) 
 }
 
 string ProdState::giveProduction() const{
-    return  this->voor + " -> '" + this->na + "'";
+    return  this->voor + " -> `" + this->na + "`";
 }
