@@ -30,7 +30,7 @@ string CFG::allTerminals() const {
         result += T + ", ";
         loop = true;
     }
-    if (loop){ // remove last ", " from the for-loop
+    if (!this->terminals.empty()){ // remove last ", " from the for-loop
         result.pop_back();
         result.pop_back();
     }
@@ -45,7 +45,7 @@ string CFG::allVariables() const {
         result += V + ", ";
         loop = true;
     }
-    if (loop){ // remove last ", " from the for-loop
+    if (!this->variabels.empty()){ // remove last ", " from the for-loop
         result.pop_back();
         result.pop_back();
     }
@@ -55,15 +55,13 @@ string CFG::allVariables() const {
 
 string CFG::allProductions() const {
     string result = "P = {\n";
-    bool loop = false;
     for (const auto &P : this->productions){
         result += P->giveProduction() + "\n";
-        loop = true;
     }
-    if (loop){
-        result.pop_back();
+    if (!this->productions.empty()){
         result.pop_back();
     }
+    result += "\n}";
     return result;
 }
 
