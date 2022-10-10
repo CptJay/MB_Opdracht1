@@ -4,8 +4,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
+#include <fstream>
+
+#include "json.hpp"
 
 using namespace std;
+using json = nlohmann::json;
 
 class ProdState;
 class CFG {
@@ -14,6 +19,7 @@ private:
     vector<string > variabels;
     vector<ProdState* > productions;
     string startState;
+    vector<string> body;
 
     string allTerminals() const;
     string allVariables() const;
@@ -22,8 +28,9 @@ private:
 
 public:
     CFG();
-
+    explicit CFG(const string& fname);
     void print();
+    virtual ~CFG();
 };
 
 
