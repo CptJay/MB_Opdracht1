@@ -1,10 +1,25 @@
 #include "ProdState.h"
 
-ProdState::ProdState(const string &voor, const string &na) : voor(voor), na(na) {
+ProdState::ProdState(const string &voor, vector<string> naa) : voor(voor), naa(naa) {
     this->voor = voor;
-    this->na = na;
+    this->naa = naa;
 }
 
 string ProdState::giveProduction() const{
-    return  this->voor + " -> `" + this->na + "`";
+    string naaa = "";
+
+
+    for (auto el : this->naa){
+        naaa += el + " ";
+    }
+    naaa.pop_back();
+    return  "    " + this->voor + " -> `" + naaa + "`";
+}
+
+const string &ProdState::getVoor() const {
+    return voor;
+}
+
+const vector <string> &ProdState::getNaa() const {
+    return naa;
 }
